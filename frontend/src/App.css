@@ -1,71 +1,477 @@
+/* Modern CSS Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
+  line-height: 1.6;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
+/* Header Styles */
 .App-header-minimal {
-  background-color: #282c34;
-  padding: 20px;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
   color: white;
-  margin-bottom: 20px;
+  padding: 1.5rem 0;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid #667eea;
 }
 
+.App-header-minimal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.header-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.header-logo {
+  font-size: 2.5rem;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.header-content:hover .header-logo {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.App-header-minimal h1 {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.header-flare {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 30px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, rgba(102, 126, 234, 0) 70%);
+}
+
+/* Main Content */
 .App-main {
-  padding: 20px;
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tenant List Styles */
+.tenant-list {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  flex: 1;
+}
+
+.tenant-list h2 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
 .tenant-list table {
-  width: 80%;
-  margin: 20px auto;
+  width: 100%;
   border-collapse: collapse;
+  margin: 0;
 }
 
 .tenant-list th,
 .tenant-list td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #f1f3f4;
+  vertical-align: middle;
 }
 
 .tenant-list th {
-  background-color: #f2f2f2;
-  color: #333;
+  background: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-align: left;
+  border-bottom: 2px solid #e9ecef;
 }
 
-.tenant-list tr:nth-child(even) {
-  background-color: #f9f9f9;
+.tenant-list tr:hover {
+  background: linear-gradient(90deg, #f8f9ff 0%, #f0f2ff 100%);
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.tenant-list tr:last-child td {
+  border-bottom: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Button Styles */
+.tenant-list button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.tenant-list button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.tenant-list button:active {
+  transform: translateY(0);
+}
+
+/* Ledger Modal Styles */
+.ledger-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: flex-start;
+  padding-top: 5vh;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.ledger-content {
+  background: white;
+  padding: 0;
+  border-radius: 20px;
+  min-width: 400px;
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  position: relative;
+  animation: slideUp 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
   }
-  to {
-    transform: rotate(360deg);
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ledger-content h3 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 1.5rem;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.close-btn:hover {
+  background: rgba(255,255,255,0.3);
+  transform: rotate(90deg);
+}
+
+/* Ledger Summary */
+.ledger-summary {
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.balance-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.summary-item {
+  text-align: center;
+}
+
+.summary-item span:first-child {
+  font-size: 0.75rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.summary-item .amount {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+.summary-item .amount.payment {
+  color: #28a745;
+}
+
+.summary-item .amount.charge {
+  color: #dc3545;
+}
+
+.total-balance {
+  background: #e9ecef;
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: 1px solid #dee2e6;
+}
+
+.total-balance .amount {
+    font-size: 1.5rem;
+}
+
+/* Ledger Body */
+.ledger-body {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  padding: 0 1.5rem;
+}
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.ledger-table th {
+  background: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  padding: 1rem 0; /* Vertical padding, horizontal is handled by parent */
+  text-align: left;
+  border-bottom: 2px solid #e9ecef;
+  position: sticky; /* Make headers sticky */
+  top: 0;
+}
+
+.ledger-table td {
+  padding: 1rem 0; /* Vertical padding, horizontal is handled by parent */
+  border-bottom: 1px solid #f1f3f4;
+  vertical-align: middle;
+}
+
+.ledger-table tbody tr:last-child {
+  /* This creates the space at the bottom */
+  border-bottom: 30px solid transparent;
+}
+
+.ledger-table tr:hover {
+  background: #f8f9ff;
+}
+
+/* Transaction Type Badges */
+.transaction-type-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.transaction-type-badge.charge {
+  background: #ffe6e6;
+  color: #dc3545;
+  border: 1px solid #ffcccc;
+}
+
+.transaction-type-badge.payment {
+  background: #e6ffe6;
+  color: #28a745;
+  border: 1px solid #ccffcc;
+}
+
+/* Unit Badge */
+.unit-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Loading Spinner & States */
+.loading-state,
+.error-state,
+.empty-ledger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-state p {
+  color: #dc3545;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.error-state button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.error-state button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Scrollbar Styling */
+.ledger-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ledger-body::-webkit-scrollbar-track {
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.ledger-body::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.ledger-body::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App-main {
+    padding: 1rem;
+  }
+
+  .tenant-list th,
+  .tenant-list td {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .ledger-content {
+    min-width: 95vw;
+    margin: 1rem;
+  }
+  
+  .transaction-type-badge,
+  .unit-badge {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .balance-summary {
+    grid-template-columns: 1fr;
   }
 } 

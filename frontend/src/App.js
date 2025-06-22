@@ -6,7 +6,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header-minimal">
-        <h1>Property Management Dashboard</h1>
+        <div className="header-content">
+          <span className="header-logo" role="img" aria-label="building">🏢</span>
+          <h1>Property Management Dashboard</h1>
+        </div>
+        <div className="header-flare"></div>
       </header>
       <main className="App-main">
         <TenantList />
