@@ -38,6 +38,7 @@ class Command(BaseCommand):
                     'date': datetime.strptime(transaction_data.get('date'), '%Y-%m-%d').date(),
                     'description': transaction_data.get('description'),
                     'amount': transaction_data.get('amount'),
+                    'type': transaction_data.get('type', 'charge'),
                 }
             )
         self.stdout.write('Successfully imported transaction data.') 
